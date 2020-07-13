@@ -1,0 +1,30 @@
+<!-- <router-outlet></router-outlet> -->
+
+<button class="btn btn-primary mr-2" (click)="opensweetalert()">Open Sweetalert Success</button>
+<button class="btn btn-danger  mr-2" (click)="opensweetalertdng()">Open Sweetalert Danger</button>
+<button class="btn btn-warning mr-2" (click)="opensweetalertcst()">Open Sweetalert Custom Buttons</button>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="search-button">
+            <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+                <input type="text" placeholder="Search.." name="search" [(ngModel)]="search">
+                <button type="submit" (click)="searchName()"><i class="fa fa-search"></i></button>
+            </form>
+
+            <ul>
+                <li *ngFor="let item of userData | filter:search" (click)="getUser(item)">
+                    {{item.name}}
+                </li>
+                <li *ngIf="(userData | filter: search).length === 0">
+                    <button class="btn btn-danger" (click)="opensweetalertdng()">No matches</button>
+                </li>
+                <li *ngIf="(userData | filter: search).length === 1">
+                    <button class="btn btn-success" (click)="opensweetalert()">User is found</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
